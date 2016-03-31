@@ -18,7 +18,35 @@ struct node {
 	int num;
 	struct node *next;
 };
-
 int linkedListMedian(struct node *head) {
-	return -1;
+	struct node *temp;
+	if (head == NULL)
+		return -1;
+	int i = 0, res, mid;
+	for (temp = head; temp != NULL; temp = temp->next)
+	{
+		i++;
+	}
+	mid = i / 2;
+	if (i % 2 == 0)
+	{
+		temp = head;
+		for (i = 0; i<mid; i++)
+		{
+			res = (temp->num + temp->next->num) / 2;;
+			temp = temp->next;
+		}
+	}
+	else
+	{
+		temp = head;
+		for (i = 0; i<mid + 1; i++)
+		{
+			res = temp->num;
+			temp = temp->next;
+		}
+	}
+
+//	printf(" res is %d", res);
+	return res;
 }
